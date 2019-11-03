@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import Cv from './Cv';
 import { PDFExport } from '@progress/kendo-react-pdf';
+import ReactGA from 'react-ga';
 
 export class About extends Component {
     exportPDFWithComponent = () => {
+        ReactGA.event({
+            category: 'Downloads',
+            action: 'Downloaded my CV'
+          });
         this.pdfExportComponent.save();
     }
     render() {
@@ -16,8 +21,8 @@ export class About extends Component {
                 </div>
                 <br></br><br></br>
                 <div className="row">
-                    <div className="card about-info col-md-6">
-                        <div className="row"><h2 className="title col-md-4">Details</h2>
+                    <div className="card about-info col-md-6 bg-light text-dark">
+                        <div className="row"><h2 className="title col-md-4 text-dark">Details</h2>
                         <button className="btn btn-warning col-md-4 d-block ml-auto mt-3" onClick={this.exportPDFWithComponent}>Download Resume</button>
                         </div>
                         <hr className="normal-hr"></hr>
@@ -26,7 +31,7 @@ export class About extends Component {
                             margin="1.5cm"
                             forcePageBreak=".page-break"
                             scale={0.7}
-                            fileName="james_savali_resume.pdf"
+                            fileName="Hesbon_Kiptoo.pdf"
                             title=""
                             subject=""
                             keywords=""
@@ -34,6 +39,7 @@ export class About extends Component {
                             >
                             
                             <Cv />
+                            
                         </PDFExport>
                     </div>
                     <div className="col-md-5 mx-auto">
